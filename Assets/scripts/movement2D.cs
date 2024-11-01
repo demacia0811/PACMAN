@@ -5,19 +5,19 @@ using UnityEngine;
 public class movement2D : MonoBehaviour
 {
     [SerializeField]
-    private float moveTime = 0.2f; //한칸 움직이는데 걸리는 시간
+    private float moveTime = 0.2f; 
     private bool isMoved = false;   
 
     public bool MoveTo(Vector3 moveDirection)
     {
         if ( isMoved ) return false;
 
-        StartCoroutine(SmoothgridMovement(transform.position = moveDirection));
+        StartCoroutine(SmoothGridMovement(transform.position + moveDirection));
 
         return true;
     }
 
-    private IEnumerator SmoothgridMovement(Vector2 endposition)
+    private IEnumerator SmoothGridMovement(Vector2 endposition)
     {
         Vector2 startposition = transform.position;
         float percent = 0;
