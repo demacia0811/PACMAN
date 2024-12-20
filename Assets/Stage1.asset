@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae4fabc78ee79441a7da604d743024a, type: 3}
   m_Name: Stage1
   m_EditorClassIdentifier: 
-  limitMin: {x: 0, y: 0}
-  limitMax: {x: 0, y: 0}
+  limitMin: {x: -6, y: -6}
+  limitMax: {x: 6, y: 6}
