@@ -6,9 +6,9 @@ using UnityEngine.Rendering;
 public class FadeEffect : MonoBehaviour
 {
     [SerializeField]
-    private float minFadeTime = 1.0f;
+    private float minFadeTime = 1f;
     [SerializeField]
-    private float maxFadeTime = 1.0f;
+    private float maxFadeTime = 4f;
 
     private float FadeTime;
     private SpriteRenderer spriteRenderer;
@@ -19,15 +19,15 @@ public class FadeEffect : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         fadeTime = Random.Range(minFadeTime, maxFadeTime);
 
-        StartCoroutine(nameof(FadeEffect));
+        StartCoroutine(nameof(FadeLoop));
     }
 
     private IEnumerator FadeLoop() 
     {
         while (true) 
         {
-            yield return StartCoroutine(OnFade(0, 1));
             yield return StartCoroutine(OnFade(1, 0));
+            yield return StartCoroutine(OnFade(0, 1));
         }
     
     }
@@ -37,7 +37,7 @@ public class FadeEffect : MonoBehaviour
         float percent = 0;
         while ( percent < 1) 
         {
-            percent += Time.deltaTime / FadeTime;
+            percent += Time.deltaTime / fadeTime;
             Color color = spriteRenderer.color;
             color.a = Mathf.Lerp(start, end, percent);
             spriteRenderer.color = color;
